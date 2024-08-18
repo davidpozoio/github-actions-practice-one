@@ -11,7 +11,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Build Image
-        run: docker build -t backend ./Dockerfile.build
+        run: docker build -t backend -f ./Dockerfile.build .
       - name: Recover build folder from Image
         run: docker run --rm -v ./dist:/home/app/dist backend
       - name: Configure Git
