@@ -16,8 +16,8 @@ jobs:
         run: docker run --rm -v ./dist:/home/app/dist backend
       - name: Configure Git
         run: |
-          git config user.name davidpozoio
-          git config user.email 117756174+davidpozoio@users.noreply.github.com
+          git config --global user.name davidpozoio
+          git config --global user.email 117756174+davidpozoio@users.noreply.github.com
       - run: ls -l
       - name: Creating Build Commit
         run: |
