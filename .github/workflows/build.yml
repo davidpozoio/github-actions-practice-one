@@ -6,6 +6,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
       - name: Creating build folder
         run: mkdir dist || true
       - name: Set up Docker Buildx
