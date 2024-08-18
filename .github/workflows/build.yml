@@ -21,7 +21,7 @@ jobs:
       - run: ls -l
       - name: Creating Build Commit
         run: |
-          git add .
+          git add . || true
           git commit -m "Add build folder"
       - name: Pushing changes
         env: 
