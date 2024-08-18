@@ -16,15 +16,13 @@ jobs:
         run: docker run --rm -v ./dist:/home/app/dist backend
       - name: Configure Git
         run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git config user.name davidpozoio
+          git config user.email 117756174+davidpozoio@users.noreply.github.com
       - run: ls -l
       - name: Creating Build Commit
         run: |
           git add .
           git commit -m "Add build folder"
       - name: Pushing changes
-        env: 
-          GITHUB_TOKEN: ${{ secrets.PASSWORD_TOKEN }}
         run: |
-          git push origin master
+          git push
