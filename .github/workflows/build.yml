@@ -25,6 +25,6 @@ jobs:
           git commit -m "Add build folder"
       - name: Pushing changes
         env: 
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PASSWORD_TOKEN }}
         run: |
           git push origin master
