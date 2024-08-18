@@ -1,0 +1,11 @@
+version: "1.0.0"
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.build
+    ports:
+      - 8000:8000
+    volumes:
+      - ./src:/home/app/src
+      - ./dist:/home/app/dist

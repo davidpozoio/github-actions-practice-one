@@ -1,0 +1,29 @@
+name: Build
+on: [push]
+jobs:
+  build-app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Creating build folder
+        run: mkdir dist
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build Image
+        run: docker build -t backend ./Dockerfile.build
+      - name: Recover build folder from Image
+        run: docker run --rm -v ./dist:/home/app/dist backend
+      - name: Configure Git
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+      - name: Creating Build Commit
+        run: |
+          git add .
+          git commit -m "Add build folder"
+      - name: Pushing changes
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git push origin 
