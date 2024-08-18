@@ -1,0 +1,9 @@
+name: Hello world
+run-name: welcome ${{ github.actor }}
+on: [push]
+jobs:
+  Start-Github-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Hello world ${{ github.actor }}'
+      - run: ls ${{ github.workspace }}
